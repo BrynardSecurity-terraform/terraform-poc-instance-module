@@ -15,7 +15,7 @@ resource "aws_instance" "this" {
 
   provisioner "local-exec" {
     working_dir = var.working_dir
-    command = var.command
+    command     = var.command
   }
 }
 
