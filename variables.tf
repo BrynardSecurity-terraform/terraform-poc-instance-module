@@ -28,7 +28,6 @@ variable "remote_exec_user" {
   description = "Username of the remote exec user"
   type        = string
   default     = ""
-  sensitive   = true
 }
 
 variable "remote_exec_password" {
