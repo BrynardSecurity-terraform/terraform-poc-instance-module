@@ -12,6 +12,20 @@ resource "aws_instance" "this" {
   subnet_id               = var.subnet_id
   vpc_security_group_ids  = var.vpc_security_group_ids
 
+  provisioner "remote-exec" {
+    inline    = ["echo booted"]
+
+    connection {
+      type      = "winrm"
+       user     = var.remote_exec_user
+       password = var.remote_exec_password
+       hosts    = aws_instance.this[count.index].public_ip
+       port     = 5985
+       insecure = true
+       https    = false
+       timeout  = "10m"
+    }
+  }
 
   provisioner "local-exec" {
     working_dir = var.working_dir

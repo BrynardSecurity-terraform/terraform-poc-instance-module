@@ -29,6 +29,17 @@ variable "instance_type" {
   default     = "t3.micro"
 }
 
+variable "remote_exec_user" {
+  description = "User account to use for remote execution"
+  type        = string
+}
+
+variable "remote_exec_password" {
+  description = "Remote exec user password"
+  type        = string
+  sensitive   = true
+}
+
 variable "staticvmname" {
   description = "Static name of the EC2 instance. When this option is used, instances can't be scaled"
   type        = string
