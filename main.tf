@@ -15,8 +15,8 @@ resource "aws_instance" "this" {
   provisioner "remote_exec" {
     connection {
       type     = "winrm"
-      user     = var.ansible_user
-      password = var.ansible_password
+      user     = var.remote_exec_user
+      password = var.remote_exec_password
       host     = aws_instance.this[count.index].public_ip
       port     = 5985
       insecure = true
