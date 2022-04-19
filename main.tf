@@ -19,7 +19,7 @@ resource "aws_instance" "this" {
       type      = "winrm"
        user     = var.remote_exec_user
        password = var.remote_exec_password
-       host     = aws_instance.this[count.index].public_ip
+       host     = aws_instance.this.public_ip
        port     = 5985
        insecure = true
        https    = false
