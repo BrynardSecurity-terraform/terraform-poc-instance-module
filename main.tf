@@ -17,8 +17,6 @@ resource "aws_instance" "this" {
     working_dir = var.working_dir
     command     = var.command
   }
-}
-
 
   tags = merge(
     {"Name" = "${var.staticvmname}" != null ? "${var.staticvmname}" : format("${var.vmname}${var.vmnameformat}", count.index + 1)},
