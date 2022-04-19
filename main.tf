@@ -12,7 +12,7 @@ resource "aws_instance" "this" {
   subnet_id               = var.subnet_id
   vpc_security_group_ids  = var.vpc_security_group_ids
 
-  provisioner "remote_exec" {
+  provisioner "remote-exec" {
     connection {
       type     = "winrm"
       user     = var.remote_exec_user
