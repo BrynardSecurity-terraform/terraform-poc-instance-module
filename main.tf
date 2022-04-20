@@ -27,13 +27,6 @@ resource "aws_instance" "this" {
     }
   }
 
-  provisioner "local-exec" {
-    working_dir = var.working_dir
-    command     = <<-EOT
-      "${var.command}"
-    EOT
-  }
-
   tags = merge(
     {"Name" = "${var.staticvmname}" != null ? "${var.staticvmname}" : format("${var.vmname}${var.vmnameformat}", count.index + 1)},
     var.tags
