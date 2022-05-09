@@ -12,6 +12,11 @@ variable "availability_zone" {
   default     = null
 }
 
+variable "command" {
+  description = "Local Exec Provisioner command to execute"
+  type        = string
+}
+
 variable "instances" {
   description = "Number of instances to be deployed from this module"
   type        = number
@@ -22,6 +27,17 @@ variable "instance_type" {
   description = "The type of instance to start"
   type        = string
   default     = "t3.micro"
+}
+
+variable "remote_exec_user" {
+  description = "User account to use for remote execution"
+  type        = string
+}
+
+variable "remote_exec_password" {
+  description = "Remote exec user password"
+  type        = string
+  sensitive   = true
 }
 
 variable "staticvmname" {
@@ -69,4 +85,9 @@ variable "vpc_security_group_ids" {
   description = "A list of security group IDs to associate with"
   type        = list(string)
   default     = null
+}
+
+variable "working_dir" {
+  description = "Working directory that local-exec provisioner will execute from"
+  type        = string
 }
